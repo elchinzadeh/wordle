@@ -13,7 +13,7 @@
 		<CompletedRow {guess} />
 	{/each}
 
-	{#if current_guess.length < 6 && guess_list.length!=6}
+	{#if current_guess.length < 6 && guess_list.length != 6}
 		<CurrentRow {current_guess} />
 	{/if}
 
