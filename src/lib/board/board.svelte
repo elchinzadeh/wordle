@@ -1,11 +1,11 @@
 <script>
-	import CompletedRow from '$lib/board/completed_row.svelte';
-	import CurrentRow from '$lib/board/current_row.svelte';
-	import EmptyRow from '$lib/board/empty_row.svelte';
+	import CompletedRow from '$lib/board/completed_row.svelte'
+	import CurrentRow from '$lib/board/current_row.svelte'
+	import EmptyRow from '$lib/board/empty_row.svelte'
 
-	export let guess_list = [];
-	export let current_guess = '';
-	$: empties = guess_list.length < 6 ? Array.from(Array(5 - guess_list.length)) : [];
+	export let guess_list = []
+	export let current_guess = ''
+	$: empties = guess_list.length < 6 ? Array.from(Array(5 - guess_list.length)) : []
 </script>
 
 <div class="flex-1 flex flex-col justify-center">
