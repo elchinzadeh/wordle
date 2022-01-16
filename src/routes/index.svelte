@@ -5,7 +5,7 @@
 	import Toast from '$lib/toast/toast.svelte';
 	import WinModal from '$lib/modal/win_modal.svelte';
 	import LostModal from '$lib/modal/lost_modal.svelte';
-	import { isWordInWordList, isWinningWord, solution } from '../constants/words';
+	import { isWordInWordList, isWinningWord, solution } from '../utils/utils';
 
 	let guess_list = [];
 	let current_guess = '';
@@ -51,7 +51,7 @@
 		}
 
 		const winningWord = isWinningWord(current_guess);
-		
+
 		if (current_guess.length == 5 && guess_list.length < 6 && !isGameWon) {
 			guess_list.push(current_guess);
 			guess_list = guess_list;

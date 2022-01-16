@@ -1,10 +1,27 @@
-import { solution } from "../constants/words";
+import { word_list } from "./word_list";
 
 export type CharStatus = "absent" | "present" | "correct";
 
-export const getStatuses = (
-  guesses: string[]
-): { [key: string]: CharStatus } => {
+export const isWordInWordList = (word: string) => {
+  return word_list.includes(word.toLowerCase());
+};
+
+export const isWinningWord = (word: string) => {
+  return solution === word.toLowerCase();
+};
+
+export const getWordOfDay = () => {
+  // January 1, 2022 Game Epoch
+  const epochMs = 1641013200000;
+  const now = Date.now();
+  const msInDay = 86400000;
+  const index = Math.floor((now - epochMs) / msInDay);
+  return word_list[index];
+};
+
+export const solution = getWordOfDay()
+
+export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {};
 
   guesses.forEach((word) => {
@@ -74,3 +91,4 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   return statuses;
 };
+

@@ -1,7 +1,7 @@
 <script>
 	import Cell from '$lib/board/cell.svelte';
 	import { fade } from 'svelte/transition';
-	import { infoModal } from '../../constants/store';
+	import { infoModal } from '../../utils/store';
 	import { onDestroy } from 'svelte';
 
 	export let visible = false;

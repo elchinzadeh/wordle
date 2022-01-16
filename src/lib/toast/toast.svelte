@@ -1,6 +1,6 @@
 <script>
 	import { onDestroy } from 'svelte';
-	import { toast } from '../../constants/store';
+	import { toast } from '../../utils/store';
 
 	let message;
 	let isToastShown = false;
