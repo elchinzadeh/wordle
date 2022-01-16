@@ -1,7 +1,7 @@
 <script>
-	import MiniCompletedRow from '$lib/mini-board/mini_completed_row.svelte';
+	import MiniCompletedRow from '$lib/mini-board/mini_completed_row.svelte'
 
-	export let guess_list;
+	export let guess_list
 </script>
 
 <div class="pb-6">
