@@ -1,9 +1,9 @@
 <script>
-	import MiniCell from './mini_cell.svelte';
-	import { getGuessStatuses } from '../../utils/utils';
+	import MiniCell from './mini_cell.svelte'
+	import { getGuessStatuses } from '../../utils/utils'
 
-	export let guess;
-	const letter_statuses = getGuessStatuses(guess);
+	export let guess
+	const letter_statuses = getGuessStatuses(guess)
 </script>
 
 <div class="flex justify-center mb-1">

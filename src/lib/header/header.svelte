@@ -1,9 +1,9 @@
 <script>
-	import InfoModal from '$lib/modal/info_modal.svelte';
-	import { infoModal } from '../../utils/store';
+	import InfoModal from '$lib/modal/info_modal.svelte'
+	import { infoModal } from '../../utils/store'
 
 	function showInfoModal() {
-		infoModal.set(true);
+		infoModal.set(true)
 	}
 </script>
 

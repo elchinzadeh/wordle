@@ -1,9 +1,9 @@
 <script>
-	import Cell from '$lib/board/cell.svelte';
+	import Cell from '$lib/board/cell.svelte'
 
-	export let current_guess = '';
+	export let current_guess = ''
 
-	$: letter_list = current_guess.split('');
+	$: letter_list = current_guess.split('')
 </script>
 
 <div class="flex justify-center mb-1">

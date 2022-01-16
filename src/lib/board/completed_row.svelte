@@ -1,10 +1,10 @@
 <script>
-	import Cell from '$lib/board/cell.svelte';
-	import { getGuessStatuses } from '../../utils/utils';
+	import Cell from '$lib/board/cell.svelte'
+	import { getGuessStatuses } from '../../utils/utils'
 
-	export let guess = '';
+	export let guess = ''
 
-	const letter_statuses = getGuessStatuses(guess);
+	const letter_statuses = getGuessStatuses(guess)
 </script>
 
 <div class="flex justify-center mb-1">

@@ -1,5 +1,5 @@
 <script>
-	import Cell from '$lib/board/cell.svelte';
+	import Cell from '$lib/board/cell.svelte'
 </script>
 
 <div class="flex justify-center mb-1">

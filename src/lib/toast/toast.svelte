@@ -1,24 +1,24 @@
 <script>
-	import { onDestroy } from 'svelte';
-	import { toast } from '../../utils/store';
+	import { onDestroy } from 'svelte'
+	import { toast } from '../../utils/store'
 
-	let message;
-	let isToastShown = false;
+	let message
+	let isToastShown = false
 
 	const unsubscribe = toast.subscribe((tst) => {
 		if (tst.message !== undefined) {
-			isToastShown = true;
-			message = tst.message;
-			setTimeout(() => toast.set({ message: undefined }), 3000);
+			isToastShown = true
+			message = tst.message
+			setTimeout(() => toast.set({ message: undefined }), 3000)
 		} else {
-			isToastShown = false;
+			isToastShown = false
 		}
-	});
+	})
 
-	onDestroy(unsubscribe);
+	onDestroy(unsubscribe)
 
 	export function showToast(message) {
-		toast.set({ message: message });
+		toast.set({ message: message })
 	}
 </script>
 
