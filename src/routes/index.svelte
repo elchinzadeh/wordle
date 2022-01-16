@@ -72,7 +72,7 @@
 <Toast bind:this={toast} />
 <WinModal visible={isGameWon} {guess_list} />
 <LostModal visible={isGameLost} {guess_list} {secret_word} />
-<div class="flex flex-col max-w-full min-h-screen mx-auto sm:px-6 lg:px-8">
+<div class="flex flex-col max-w-lg min-h-screen mx-auto">
 	<Header />
 	<Board {guess_list} {current_guess} />
 	<Keyboard on:clicked={handleKeyboardClick} {guess_list} />
