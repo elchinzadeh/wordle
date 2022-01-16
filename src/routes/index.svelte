@@ -15,13 +15,15 @@
 	let toast;
 
 	function enterKey(key) {
-		if (key == 'Delete') {
-			current_guess = current_guess.slice(0, -1);
-		} else if (key == 'Enter') {
-			enter();
-		} else {
-			if (current_guess.length < 5 && current_guess.length < 6) {
-				current_guess += key;
+		if (!isGameWon && !isGameLost) {
+			if (key == 'Delete') {
+				current_guess = current_guess.slice(0, -1);
+			} else if (key == 'Enter') {
+				enter();
+			} else {
+				if (current_guess.length < 5 && current_guess.length < 6) {
+					current_guess += key;
+				}
 			}
 		}
 	}
@@ -49,14 +51,13 @@
 		}
 
 		const winningWord = isWinningWord(current_guess);
-
+		
 		if (current_guess.length == 5 && guess_list.length < 6 && !isGameWon) {
 			guess_list.push(current_guess);
 			guess_list = guess_list;
 			current_guess = '';
-
 			if (winningWord) {
-				return (isGameWon = true);
+				isGameWon = true;
 			}
 		}
 
