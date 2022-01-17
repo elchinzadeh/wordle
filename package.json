@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/supabase-js": "^1.29.1",
 		"package.json": "^2.0.1"
 	}
 }
