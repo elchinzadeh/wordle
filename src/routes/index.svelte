@@ -5,17 +5,22 @@
 	import Toast from '$lib/toast/toast.svelte'
 	import WinModal from '$lib/modal/win_modal.svelte'
 	import LostModal from '$lib/modal/lost_modal.svelte'
-	import { isWordInWordList, isWinningWord, solution } from '../utils/utils'
+	import { isWordInWordList, isWinningWord, solution, getWordOfDay, insertWord, supabase } from '../utils/utils'
+	import { nameModal, userStore } from '../utils/store'
 
 	let guess_list = []
 	let current_guess = ''
-	let secret_word = solution
+	let multi_guess_list = []
+	let isModalShowing = false
+
 	let isGameWon = false
 	let isGameLost = false
 	let toast
+	let secret_word = solution
+	let current_username
 
 	function enterKey(key) {
-		if (!isGameWon && !isGameLost) {
+		if (!isGameWon && !isGameLost && !isModalShowing) {
 			if (key == 'Delete') {
 				current_guess = current_guess.slice(0, -1)
 			} else if (key == 'Enter') {
@@ -27,6 +32,10 @@
 			}
 		}
 	}
+	nameModal.subscribe((value) => {
+		isModalShowing = value
+		console.log(isModalShowing)
+	})
 
 	function handleKeyboardClick(event) {
 		enterKey(event.detail.text)
@@ -56,6 +65,8 @@
 			guess_list.push(current_guess)
 			guess_list = guess_list
 			current_guess = ''
+
+			insertWordToServer(guess_list)
 			if (winningWord) {
 				isGameWon = true
 			}
@@ -65,6 +76,29 @@
 			isGameLost = true
 		}
 	}
+
+	userStore.subscribe((value) => {
+		current_username = value
+	})
+
+	function insertWordToServer(guess_list) {
+		insertWord(current_username, guess_list)
+	}
+
+	const mySubscription = supabase
+		.from('rooms')
+		.on('*', (payload) => {
+			// console.log(multi_guess_list)
+			let data = payload["new"]
+			if(data["username"]!=current_username){
+				console.log(data["guess_list"])
+				multi_guess_list = data["guess_list"]
+			}
+			// console.log('Change received!', data)
+		})
+		mySubscription.subscribe()
+	const user = supabase.auth.user()
+	console.log(user)
 </script>
 
 <svelte:window on:keydown={handleKeyboardClickOnWindows} />
@@ -72,8 +106,11 @@
 <Toast bind:this={toast} />
 <WinModal visible={isGameWon} {guess_list} />
 <LostModal visible={isGameLost} {guess_list} {secret_word} />
-<div class="flex flex-col max-w-lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
+<div class="flex flex-col max-w-2lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
 	<Header />
-	<Board {guess_list} {current_guess} />
+	<div class="flex m-5">
+		<Board {guess_list} {current_guess} />
+		<Board guess_list={multi_guess_list} hidden={true} />
+	</div>
 	<Keyboard on:clicked={handleKeyboardClick} {guess_list} />
 </div>

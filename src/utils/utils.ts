@@ -1,4 +1,7 @@
 import { word_list } from "./word_list"
+import { SUPABASE_URL, SUPABASE_KEY } from '../utils/variables';
+import { createClient } from '@supabase/supabase-js'
+import { userStore } from '../utils/store';
 
 export type CharStatus = "absent" | "present" | "correct"
 
@@ -11,12 +14,13 @@ export const isWinningWord = (word: string) => {
 }
 
 export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
+    // January 1, 2022 Game Epoch
   const epochMs = 1641013200000
   const now = Date.now()
-  const msInDay = 86400000
-  const index = Math.floor((now - epochMs) / msInDay)
-  return word_list[index]
+  const msInDay = 700000
+  let index = Math.floor((now - epochMs) / msInDay)
+  console.log(word_list[index])
+  return word_list[index].toUpperCase()
 }
 
 export const solution = getWordOfDay()
@@ -24,8 +28,10 @@ export const solution = getWordOfDay()
 export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
 
+  console.log(guesses)
+  console.log(solution)
+  
   guesses.forEach((word) => {
-    word = word.toLowerCase()
     word.split("").forEach((letter, i) => {
       if (!solution.includes(letter)) {
         // make status absent
@@ -43,12 +49,11 @@ export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } =>
       }
     })
   })
-
+  console.log(charObj)
   return charObj
 }
 
 export const getGuessStatuses = (guess: string): CharStatus[] => {
-  guess = guess.toLowerCase()
   const splitSolution = solution.split("")
   const splitGuess = guess.split("")
 
@@ -91,4 +96,22 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   return statuses
 }
+export const supabase = createClient(SUPABASE_URL.toString(), SUPABASE_KEY.toString())
 
+export const saveUser = async (username: string) => {
+  const { data, error } = await supabase
+    .from('users')
+    .insert([
+      { name: username, score: 0 }
+    ])
+    userStore.set(username)
+}
+
+export const insertWord = async (username, guess_list) => {
+  const { data, error } = await supabase
+    .from('rooms')
+    .update({ 'guess_list': guess_list })
+    .eq('username', username)
+    .eq('code', 1232)
+  return data
+}

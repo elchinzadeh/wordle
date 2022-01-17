@@ -5,12 +5,13 @@
 
 	export let guess_list = []
 	export let current_guess = ''
+	export let hidden = false
 	$: empties = guess_list.length < 6 ? Array.from(Array(5 - guess_list.length)) : []
 </script>
 
 <div class="flex-1 flex flex-col justify-center">
 	{#each guess_list as guess}
-		<CompletedRow {guess} />
+		<CompletedRow {hidden} {guess} />
 	{/each}
 
 	{#if current_guess.length < 6 && guess_list.length != 6}

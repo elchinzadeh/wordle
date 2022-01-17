@@ -1,6 +1,7 @@
 <script>
 	import InfoModal from '$lib/modal/info_modal.svelte'
-	import { infoModal } from '../../utils/store'
+	import NameModal from '$lib/modal/name_modal.svelte'
+	import { infoModal, nameModal } from '../../utils/store'
 	import Icon from '@iconify/svelte'
 	import { SUPABASE_URL, SUPABASE_KEY } from '../../utils/variables';
 
@@ -11,20 +12,22 @@
 	import { createClient } from '@supabase/supabase-js'
 
 	async function test(){
-		const supabaseUrl = 'https://oxgmbrsyzojiwwtriddy.supabase.co'
-		const supabaseKey = SUPABASE_KEY
-		const supabase = createClient(supabaseUrl, supabaseKey.toString())
-		const { data, error } = await supabase
-		.from('rooms')
-		.insert([
-			{ name: 'The Shire', code: 5541 }
-		])
+		// nameModal.set(true)
+		// const supabaseUrl = 'https://oxgmbrsyzojiwwtriddy.supabase.co'
+		// const supabaseKey = SUPABASE_KEY
+		// const supabase = createClient(supabaseUrl, supabaseKey.toString())
+		// const { data, error } = await supabase
+		// .from('rooms')
+		// .insert([
+		// 	{ name: 'The Shire', code: 5541 }
+		// ])
 	}
 	
 	
 </script>
 
 <InfoModal />
+<NameModal/>
 <div>
 	<div class="max-w-md mx-auto p-2 border-b">
 		<div class="flex justify-between">
