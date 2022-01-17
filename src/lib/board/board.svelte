@@ -10,7 +10,7 @@
 	$: empties = guess_list.length < 6 ? Array.from(Array(5 - guess_list.length)) : []
 </script>
 
-<div class="flex-1 flex flex-col justify-center">
+<div class="flex flex-col justify-center">
 	<div class="flex justify-center text-bold text-2xl mb-2">
 		{username}
 	</div>

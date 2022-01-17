@@ -136,7 +136,7 @@
 <LostModal visible={isGameLost} {guess_list} {secret_word} />
 <div class="flex flex-col max-w-2lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
 	<Header />
-	<div class="flex m-5 flex-grow">
+	<div class="flex-1 flex space-x-3 mx-auto">
 		<Board {guess_list} {current_guess} username={current_username} />
 		<Board guess_list={multi_guess_list} hidden={true} username={another_username} />
 	</div>
