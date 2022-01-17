@@ -4,7 +4,7 @@
 	export let value
 	export let status = 'normal'
 
-	const initial_class = 'flex items-center justify-center rounded mx-0.5 text-base cursor-pointer'
+	const initial_class = 'flex items-center justify-center rounded mx-0.5 text-base cursor-pointer unselectable'
 	let status_class = {
 		normal: 'bg-slate-200 hover:bg-slate-300 active:bg-slate-400',
 		absent: 'bg-slate-400 text-white',
