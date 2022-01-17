@@ -1,7 +1,7 @@
 import { word_list } from "./word_list"
 import { SUPABASE_URL, SUPABASE_KEY } from '../utils/variables';
 import { createClient } from '@supabase/supabase-js'
-import { userStore } from '../utils/store';
+import { roomStore, userStore, gameStateStore } from '../utils/store';
 
 export type CharStatus = "absent" | "present" | "correct"
 
@@ -14,7 +14,7 @@ export const isWinningWord = (word: string) => {
 }
 
 export const getWordOfDay = () => {
-    // January 1, 2022 Game Epoch
+  // January 1, 2022 Game Epoch
   const epochMs = 1641013200000
   const now = Date.now()
   const msInDay = 700000
@@ -30,7 +30,7 @@ export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } =>
 
   console.log(guesses)
   console.log(solution)
-  
+
   guesses.forEach((word) => {
     word.split("").forEach((letter, i) => {
       if (!solution.includes(letter)) {
@@ -98,20 +98,54 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 }
 export const supabase = createClient(SUPABASE_URL.toString(), SUPABASE_KEY.toString())
 
-export const saveUser = async (username: string) => {
+export const saveUser = async (username: string, room: string) => {
   const { data, error } = await supabase
-    .from('users')
+    .from('rooms')
     .insert([
-      { name: username, score: 0 }
+      { username: username, room: room, guess_list: [] }
     ])
-    userStore.set(username)
+  console.log(error)
+  userStore.set(username)
+  roomStore.set(room)
 }
 
-export const insertWord = async (username, guess_list) => {
+export const insertWord = async (username, room, guess_list) => {
   const { data, error } = await supabase
     .from('rooms')
     .update({ 'guess_list': guess_list })
     .eq('username', username)
-    .eq('code', 1232)
+    .eq('room', room)
   return data
+}
+
+// export const getRoomInformation = async (username, room) => {
+//   let { data: rooms_data, error } = await supabase
+//     .from('rooms')
+//     .select("*")
+//     .eq('room', room)
+//   console.log(error)
+//   console.log(rooms_data)
+//   return rooms_data
+// }
+
+
+export async function getRoomInformation(username, room) {
+  try {
+    let { data, error } = await supabase
+      .from('rooms')
+      .select("*")
+      .eq('room', room)
+
+    if (error) throw error
+
+    if (data) {
+      gameStateStore.set(data)
+      return data
+      
+    }
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    console.log("here it is")
+  }
 }

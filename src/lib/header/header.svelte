@@ -1,7 +1,7 @@
 <script>
 	import InfoModal from '$lib/modal/info_modal.svelte'
 	import NameModal from '$lib/modal/name_modal.svelte'
-	import { infoModal, nameModal } from '../../utils/store'
+	import { infoModal, nameModal, remove } from '../../utils/store'
 	import Icon from '@iconify/svelte'
 	import { SUPABASE_URL, SUPABASE_KEY } from '../../utils/variables';
 
@@ -12,15 +12,7 @@
 	import { createClient } from '@supabase/supabase-js'
 
 	async function test(){
-		// nameModal.set(true)
-		// const supabaseUrl = 'https://oxgmbrsyzojiwwtriddy.supabase.co'
-		// const supabaseKey = SUPABASE_KEY
-		// const supabase = createClient(supabaseUrl, supabaseKey.toString())
-		// const { data, error } = await supabase
-		// .from('rooms')
-		// .insert([
-		// 	{ name: 'The Shire', code: 5541 }
-		// ])
+		remove()
 	}
 	
 	
