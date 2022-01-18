@@ -1,7 +1,7 @@
 <script>
 	import Cell from '$lib/board/cell.svelte'
 	import { fade } from 'svelte/transition'
-	import { data } from '../../utils/store'
+	import { data } from '$utils/store'
 </script>
 
 {#if $data.modals.infoModal.visible}

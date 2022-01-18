@@ -1,5 +1,5 @@
 <script>
-	import { data } from '../../utils/store'
+	import { data } from '$utils/store'
 
 	export function showToast(message) {
 		$data.toast = { message: message, visble: true }

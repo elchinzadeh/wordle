@@ -7,7 +7,7 @@
 	import Board from '$lib/board/board.svelte'
 	import Keyboard from '$lib/keyboard/keyboard.svelte'
 	
-	import { isWordInWordList, isWinningWord, solution } from '../utils/utils'
+	import { isWordInWordList, isWinningWord, solution } from '$utils/utils'
 
 	let guess_list = []
 	let current_guess = ''

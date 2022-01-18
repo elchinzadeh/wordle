@@ -1,6 +1,6 @@
 <script>
 	import Cell from '$lib/board/cell.svelte'
-	import { getGuessStatuses } from '../../utils/utils'
+	import { getGuessStatuses } from '$utils/utils'
 
 	export let guess = ''
 

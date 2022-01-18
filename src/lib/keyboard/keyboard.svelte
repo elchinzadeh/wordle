@@ -1,6 +1,6 @@
 <script>
 	import Key from '$lib/keyboard/key.svelte'
-	import { getStatuses } from '../../utils/utils'
+	import { getStatuses } from '$utils/utils'
 
 	export let guess_list
 	let keyboard = [

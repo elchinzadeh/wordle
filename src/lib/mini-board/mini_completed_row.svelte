@@ -1,6 +1,6 @@
 <script>
-	import MiniCell from './mini_cell.svelte'
-	import { getGuessStatuses } from '../../utils/utils'
+	import MiniCell from '$lib/mini-board/mini_cell.svelte'
+	import { getGuessStatuses } from '$utils/utils'
 
 	export let guess
 	const letter_statuses = getGuessStatuses(guess)

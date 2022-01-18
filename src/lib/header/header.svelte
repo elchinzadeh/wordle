@@ -1,6 +1,6 @@
 <script>
 	import InfoModal from '$lib/modal/info_modal.svelte'
-	import { data } from '../../utils/store'
+	import { data } from '$utils/store'
 	import Icon from '@iconify/svelte'
 </script>
 
