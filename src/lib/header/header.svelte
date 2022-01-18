@@ -1,6 +1,6 @@
 <script>
 	import InfoModal from '$lib/modal/info_modal.svelte'
-	import { infoModalVisible } from '../../utils/store'
+	import { data } from '../../utils/store'
 	import Icon from '@iconify/svelte'
 </script>
 
@@ -8,7 +8,7 @@
 <div>
 	<div class="max-w-md mx-auto p-2 border-b">
 		<div class="flex justify-between">
-			<div class="flex items-center" on:click={() => infoModalVisible.set(true)}>
+			<div class="flex items-center" on:click={() => ($data.modals.infoModal.visible = true)}>
 				<Icon icon="ant-design:question-circle-outlined" class="h-8 w-8" />
 			</div>
 
