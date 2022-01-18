@@ -1,23 +1,11 @@
 <script>
 	import Cell from '$lib/board/cell.svelte'
 	import { fade } from 'svelte/transition'
-	import { infoModal } from '../../utils/store'
-	import { onDestroy } from 'svelte'
-
-	export let visible = false
-
-	const unsubscribe = infoModal.subscribe((value) => {
-		visible = value
-	})
-	onDestroy(unsubscribe)
-
-	function closeModal() {
-		infoModal.set(false)
-	}
+	import { infoModalVisible } from '../../utils/store'
 </script>
 
-{#if visible}
-	<div class="fixed z-10 inset-0 overflow-y-auto" out:fade in:fade on:click={closeModal}>
+{#if $infoModalVisible}
+	<div class="fixed z-10 inset-0 overflow-y-auto" out:fade in:fade >
 		<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 			<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 			<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"> &#8203 </span>
@@ -56,7 +44,7 @@
 							</div>
 							<p class="text-sm text-gray-500">The letter U is not in the word in any spot.</p>
 
-							<button type="button" class="mt-4 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" on:click={closeModal}> Close </button>
+							<button on:click={()=>infoModalVisible.set(false)} type="button" class="mt-4 inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" > Close </button>
 						</div>
 					</div>
 				</div>

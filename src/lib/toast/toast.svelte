@@ -9,7 +9,7 @@
 		if (tst.message !== undefined) {
 			isToastShown = true
 			message = tst.message
-			setTimeout(() => toast.set({ message: undefined }), 3000)
+			setTimeout(() => toast.set({ message: undefined, isShown: false }), 3000)
 		} else {
 			isToastShown = false
 		}
@@ -18,7 +18,7 @@
 	onDestroy(unsubscribe)
 
 	export function showToast(message) {
-		toast.set({ message: message })
+		toast.set({ message: message, isShown: true })
 	}
 </script>
 
