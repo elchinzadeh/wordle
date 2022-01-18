@@ -29,9 +29,9 @@
 
 	function enterKey(key) {
 		if (!isGameWon && !isGameLost) {
-			if (key == 'Delete') {
+			if (key == 'Delete' || key == 'Sil') {
 				current_guess = current_guess.slice(0, -1)
-			} else if (key == 'Enter') {
+			} else if (key == 'Enter' || key == 'Yoxla') {
 				checkWord()
 			} else {
 				if (current_guess.length < 5 && current_guess.length < 6) {
