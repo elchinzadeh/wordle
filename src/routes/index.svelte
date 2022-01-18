@@ -7,6 +7,8 @@
 	import LostModal from '$lib/modal/lost_modal.svelte'
 	import { isWordInWordList, isWinningWord, solution, getWordOfDay, insertWord, supabase, getRoomInformation } from '../utils/utils'
 	import { nameModal, roomStore, userStore, gameStateStore } from '../utils/store'
+	
+import { onMount } from 'svelte';
 
 	let guess_list = []
 	let current_guess = ''
@@ -90,9 +92,12 @@
 		insertWord(current_username, current_room, guess_list)
 	}
 
-	let data = getRoomInformation(current_room, current_room)
-	console.log('ROOM')
-	console.log(data)
+	onMount(async () => {
+		let data = getRoomInformation(current_room, current_room)
+		console.log('ROOM')
+		console.log(data)
+	});
+	
 
 	gameStateStore.subscribe((value) => {
 		console.log('HHHHHHH')
@@ -125,8 +130,7 @@
 	})
 
 	mySubscription.subscribe()
-	const user = supabase.auth.user()
-	console.log(user)
+
 </script>
 
 <svelte:window on:keydown={handleKeyboardClickOnWindows} />

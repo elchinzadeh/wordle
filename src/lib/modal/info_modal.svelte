@@ -1,22 +1,14 @@
 <script>
 	import Cell from '$lib/board/cell.svelte'
 	import { fade } from 'svelte/transition'
-	import { infoModal } from '../../utils/store'
-	import { onDestroy } from 'svelte'
-
-	export let visible = false
-
-	const unsubscribe = infoModal.subscribe((value) => {
-		visible = value
-	})
-	onDestroy(unsubscribe)
+	import { infoModalVisible } from '../../utils/store'
 
 	function closeModal() {
-		infoModal.set(false)
+		infoModalVisible.set(false)
 	}
 </script>
 
-{#if visible}
+{#if $infoModalVisible}
 	<div class="fixed z-10 inset-0 overflow-y-auto" out:fade in:fade on:click={closeModal}>
 		<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 			<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />

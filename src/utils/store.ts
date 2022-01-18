@@ -2,9 +2,13 @@ import { writable } from 'svelte/store'
 import { browser } from '$app/env';
 
 export const toast = writable({ message: undefined })
-export const infoModal = writable(false)
+export const infoModalVisible = writable(false)
 export const nameModal = writable(false)
- 
+
+export const toggleInfoModal = () => {
+  infoModalVisible.set(true)
+}
+
 const defaultValue = 'undefined';
 const userInitialValue = browser ? window.localStorage.getItem('username') ?? defaultValue : defaultValue;
  
@@ -37,7 +41,7 @@ gameStateStore.subscribe((value) => {
   }
 });
 
-export const remove = () => {
+export const clearLocalStorage = () => {
   if (browser) {
     window.localStorage.clear()
     window.location.reload()
