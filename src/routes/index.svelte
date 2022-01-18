@@ -1,36 +1,19 @@
 <script>
-	import Header from '$lib/header/header.svelte'
-	import Board from '$lib/board/board.svelte'
-	import Keyboard from '$lib/keyboard/keyboard.svelte'
 	import Toast from '$lib/toast/toast.svelte'
 	import WinModal from '$lib/modal/win_modal.svelte'
 	import LostModal from '$lib/modal/lost_modal.svelte'
+
+	import Header from '$lib/header/header.svelte'
+	import Board from '$lib/board/board.svelte'
+	import Keyboard from '$lib/keyboard/keyboard.svelte'
+	
 	import { isWordInWordList, isWinningWord, solution } from '../utils/utils'
 
 	let guess_list = []
 	let current_guess = ''
-	let secret_word = solution
 	let isGameWon = false
 	let isGameLost = false
 	let toast
-
-	function enterKey(key) {
-		if (!isGameWon && !isGameLost) {
-			if (key == 'Delete') {
-				current_guess = current_guess.slice(0, -1)
-			} else if (key == 'Enter') {
-				enter()
-			} else {
-				if (current_guess.length < 5 && current_guess.length < 6) {
-					current_guess += key
-				}
-			}
-		}
-	}
-
-	function handleKeyboardClick(event) {
-		enterKey(event.detail.text)
-	}
 
 	function handleKeyboardClickOnWindows(event) {
 		let key = event.key.toUpperCase()
@@ -44,7 +27,21 @@
 		}
 	}
 
-	function enter() {
+	function enterKey(key) {
+		if (!isGameWon && !isGameLost) {
+			if (key == 'Delete') {
+				current_guess = current_guess.slice(0, -1)
+			} else if (key == 'Enter') {
+				checkWord()
+			} else {
+				if (current_guess.length < 5 && current_guess.length < 6) {
+					current_guess += key
+				}
+			}
+		}
+	}
+
+	function checkWord() {
 		if (!isWordInWordList(current_guess)) {
 			toast.showToast('Word not found')
 			return
@@ -71,9 +68,10 @@
 
 <Toast bind:this={toast} />
 <WinModal visible={isGameWon} {guess_list} />
-<LostModal visible={isGameLost} {guess_list} {secret_word} />
+<LostModal visible={isGameLost} {guess_list} secret_word = {solution} />
+
 <div class="flex flex-col max-w-lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
 	<Header />
 	<Board {guess_list} {current_guess} />
-	<Keyboard on:clicked={handleKeyboardClick} {guess_list} />
+	<Keyboard on:clicked={(event) => enterKey(event.detail.text)} {guess_list} />
 </div>
