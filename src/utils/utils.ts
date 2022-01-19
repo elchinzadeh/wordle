@@ -1,13 +1,13 @@
 import { word_list } from "./word_list"
 
-export type CharStatus = "absent" | "present" | "correct"
+export type CharStatus = "absent" | "present" | "correct" | "normal"
 
 export const isWordInWordList = (word: string) => {
   return word_list.includes(word.toLowerCase())
 }
 
 export const isWinningWord = (word: string) => {
-  return solution === word.toLowerCase()
+  return solution === word.toUpperCase()
 }
 
 export const getWordOfDay = () => {
@@ -16,16 +16,15 @@ export const getWordOfDay = () => {
   const now = Date.now()
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)
-  return word_list[index]
+  return word_list[index].toUpperCase()
 }
 
 export const solution = getWordOfDay()
 
 export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
-
   guesses.forEach((word) => {
-    word = word.toLowerCase()
+    word = word.toUpperCase()
     word.split("").forEach((letter, i) => {
       if (!solution.includes(letter)) {
         // make status absent
@@ -43,12 +42,10 @@ export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } =>
       }
     })
   })
-
   return charObj
 }
 
 export const getGuessStatuses = (guess: string): CharStatus[] => {
-  guess = guess.toLowerCase()
   const splitSolution = solution.split("")
   const splitGuess = guess.split("")
 

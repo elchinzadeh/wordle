@@ -1,7 +1,59 @@
 /* Write your global styles here, in PostCSS syntax */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.unselectable {
-    user-select: none;
+@layer components {
+    .unselectable {
+        user-select: none;
+    }
+    .modal {
+        @apply flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0
+    }
+    .modal-background {
+        @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity
+    }
+    .modal-content {
+        @apply inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6
+    }
+    .btn {
+        @apply inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm mt-5
+    }
+    .toast {
+        @apply absolute top-2.5 left-1/2 transform -translate-x-1/2 max-w-sm w-full bg-rose-200 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden
+    }
+    .key {
+        @apply flex items-center justify-center rounded mx-0.5 text-base cursor-pointer unselectable
+    }
+    .normal_key {
+        @apply bg-slate-300 hover:bg-slate-400 active:bg-slate-500
+    }
+    .absent_key {
+        @apply bg-slate-500 text-white
+    }
+    .correct_key {
+        @apply bg-green-500 hover:bg-green-600 active:bg-green-700 text-white
+    }
+    .present_key {
+        @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white
+    }
+    .board_cell {
+        @apply w-16 h-16 border-solid border-2 flex items-center justify-center mx-0.5 text-lg font-bold rounded-lg unselectable
+    }
+    .normal_cell {
+        @apply bg-slate-100 border-slate-300
+    }
+    .absent_cell {
+        @apply bg-slate-500 border-slate-500 text-white
+    }
+    .correct_cell {
+        @apply bg-green-500 border-green-500 text-white
+    }
+    .present_cell {
+        @apply bg-yellow-500 border-yellow-500 text-white
+    }
+    .mini-cell {
+        @apply w-10 h-10 border-solid border-2 border-slate-200 flex items-center justify-center mx-0.5 text-lg font-bold rounded
+    }
+
 }
