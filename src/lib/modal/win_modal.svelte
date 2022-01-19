@@ -13,7 +13,7 @@
 		<div class="modal-content">
 			<div>
 				<div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-					<Icon icon="akar-icons:check"/>
+					<Icon icon="akar-icons:check" />
 				</div>
 				<div class="mt-3 text-center sm:mt-5">
 					<h3 class="text-lg leading-6 font-medium text-gray-900">You win!</h3>

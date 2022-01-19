@@ -7,6 +7,11 @@
     .unselectable {
         user-select: none;
     }
+    .main {
+        height: 100vh; 
+        max-height: -webkit-fill-available;
+        @apply flex flex-col max-w-lg min-h-screen mx-auto;
+    }
     .modal {
         @apply flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0
     }
@@ -23,7 +28,7 @@
         @apply absolute top-2.5 left-1/2 transform -translate-x-1/2 max-w-sm w-full bg-rose-200 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden
     }
     .key {
-        @apply flex items-center justify-center rounded mx-0.5 text-base cursor-pointer unselectable
+        @apply rounded mx-0.5 cursor-pointer unselectable;
     }
     .normal_key {
         @apply bg-slate-300 hover:bg-slate-400 active:bg-slate-500

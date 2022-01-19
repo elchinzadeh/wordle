@@ -16,7 +16,7 @@
 		dispatch('clicked', { text: value })
 	}
 
-	const style = 'width: ' + (value.length > 1 ? '60' : '40') + 'px; height: 58px'
+	const style = 'width: ' + (value.length > 1 ? '65' : '40') + 'px; height: 50px'
 </script>
 
 <button on:click={onClick} class="key {status_class[status]}" {style}>

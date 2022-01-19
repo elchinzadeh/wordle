@@ -2,7 +2,6 @@
 	import Toast from '$lib/toast/toast.svelte'
 	import WinModal from '$lib/modal/win_modal.svelte'
 	import LostModal from '$lib/modal/lost_modal.svelte'
-
 	import Header from '$lib/header/header.svelte'
 	import Board from '$lib/board/board.svelte'
 	import Keyboard from '$lib/keyboard/keyboard.svelte'
@@ -68,9 +67,9 @@
 
 <Toast bind:this={toast} />
 <WinModal visible={isGameWon} {guess_list} />
-<LostModal visible={isGameLost} secret_word = {solution} />
+<LostModal visible={isGameLost} secret_word={solution} />
 
-<div class="flex flex-col max-w-lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
+<div class="main">
 	<Header />
 	<Board {guess_list} {current_guess} />
 	<Keyboard on:clicked={(event) => enterKey(event.detail.text)} {guess_list} />
