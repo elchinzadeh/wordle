@@ -4,7 +4,7 @@
 	export let value
 	export let status
 
-	let status_class = {
+	const status_class = {
 		normal: 'normal_key',
 		absent: 'absent_key',
 		correct: 'correct_key',

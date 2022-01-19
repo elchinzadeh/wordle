@@ -1,4 +1,4 @@
-import { word_list } from "./word_list"
+import { word_list } from "$utils/word_list"
 
 export type CharStatus = "absent" | "present" | "correct" | "normal"
 
@@ -88,4 +88,5 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
 
   return statuses
 }
+
 

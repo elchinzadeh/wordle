@@ -1,8 +1,7 @@
 <script>
 	export let value = ''
 	export let status = 'normal'
-
-	let status_class = {
+	const status_class = {
 		normal: 'normal_cell',
 		absent: 'absent_cell',
 		correct: 'correct_cell',

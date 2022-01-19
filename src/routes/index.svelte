@@ -5,72 +5,47 @@
 	import Header from '$lib/header/header.svelte'
 	import Board from '$lib/board/board.svelte'
 	import Keyboard from '$lib/keyboard/keyboard.svelte'
-	
+
 	import { isWordInWordList, isWinningWord, solution } from '$utils/utils'
 
 	let guess_list = []
 	let current_guess = ''
-	let isGameWon = false
-	let isGameLost = false
+	let is_game_won = false
+	let is_game_lost = false
 	let toast
 
-	function handleKeyboardClickOnWindows(event) {
-		let key = event.key.toUpperCase()
-		if (key == 'ENTER') {
-			key = 'Enter'
-		} else if (key == 'BACKSPACE') {
-			key = 'Delete'
-		}
-		if (key.length === 1 || key == 'Enter' || key == 'Delete') {
-			enterKey(key)
-		}
-	}
-
-	function enterKey(key) {
-		if (!isGameWon && !isGameLost) {
-			if (key == 'Delete') {
+	function enterKey(character) {
+		if (!is_game_won && !is_game_lost) {
+			if (character == 'DELETE' || character == 'BACKSPACE') {
 				current_guess = current_guess.slice(0, -1)
-			} else if (key == 'Enter') {
+			} else if (character == 'ENTER') {
 				checkWord()
-			} else {
-				if (current_guess.length < 5 && current_guess.length < 6) {
-					current_guess += key
-				}
+			} else if (current_guess.length < 5 && current_guess.length < 6 && character.length == 1) {
+				current_guess += character
 			}
 		}
 	}
 
 	function checkWord() {
-		if (!isWordInWordList(current_guess)) {
-			toast.showToast('Word not found')
-			return
-		}
-
+		if (!isWordInWordList(current_guess)) return toast.showToast('Word not found')
 		const winningWord = isWinningWord(current_guess)
-
-		if (current_guess.length == 5 && guess_list.length < 6 && !isGameWon) {
-			guess_list.push(current_guess)
-			guess_list = guess_list
+		if (current_guess.length == 5 && guess_list.length < 6 && !is_game_won) {
+			guess_list = [...guess_list, current_guess]
 			current_guess = ''
-			if (winningWord) {
-				isGameWon = true
-			}
+			if (winningWord) return (is_game_won = true)
 		}
-
-		if (guess_list.length == 6) {
-			isGameLost = true
-		}
+		if (guess_list.length == 6) is_game_lost = true
 	}
 </script>
 
-<svelte:window on:keydown={handleKeyboardClickOnWindows} />
+<svelte:window on:keydown={(event) => enterKey(event.key.toUpperCase())} />
 
 <Toast bind:this={toast} />
-<WinModal visible={isGameWon} {guess_list} />
-<LostModal visible={isGameLost} secret_word={solution} />
+<WinModal visible={is_game_won} {guess_list} />
+<LostModal visible={is_game_lost} secret_word={solution} />
 
 <div class="main">
 	<Header />
 	<Board {guess_list} {current_guess} />
-	<Keyboard on:clicked={(event) => enterKey(event.detail.text)} {guess_list} />
+	<Keyboard on:clicked={(event) => enterKey(event.detail.text.toUpperCase())} {guess_list} />
 </div>
