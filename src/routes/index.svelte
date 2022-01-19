@@ -68,7 +68,7 @@
 
 <Toast bind:this={toast} />
 <WinModal visible={isGameWon} {guess_list} />
-<LostModal visible={isGameLost} {guess_list} secret_word = {solution} />
+<LostModal visible={isGameLost} secret_word = {solution} />
 
 <div class="flex flex-col max-w-lg min-h-screen mx-auto " style="height: 100vh; max-height: -webkit-fill-available;">
 	<Header />
