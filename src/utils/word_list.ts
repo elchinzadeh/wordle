@@ -1,5 +1,4 @@
-export const word_list = [
-    "ABBAT",
+export const word_list = ["ABBAT",
   "ABDAL",
   "ABİDƏ",
   "ABORT",

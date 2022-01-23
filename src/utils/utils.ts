@@ -17,7 +17,7 @@ export const getWordOfDay = () => {
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)
   console.log(word_list[index])
-  return word_list[index]
+  return word_list[44]
 }
 
 export const solution = getWordOfDay()

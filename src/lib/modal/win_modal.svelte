@@ -22,12 +22,12 @@
 						<h3 class="text-lg leading-6 font-medium text-gray-900">You win!</h3>
 						<div class="mt-2">
 							<MiniBoard {guess_list} />
-							<p class="text-sm text-gray-500">Congrats.</p>
+							<p class="text-sm text-gray-500">Təbriklər</p>
 						</div>
 					</div>
 				</div>
 				<div class="mt-5 sm:mt-6">
-					<button on:click={() => visible = false} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" > Close </button>
+					<button on:click={() => visible = false} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" > Bağla </button>
 				</div>
 			</div>
 		</div>
