@@ -3,7 +3,8 @@ import { writable } from 'svelte/store'
 export const data = writable({
     toast: {
         message: undefined,
-        visble: false
+        visble: false,
+        type: 'bg-red-200'
     },
     modals: {
         infoModal: {

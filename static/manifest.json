@@ -1,6 +1,6 @@
 {
-    "short_name": "Wordle",
-    "name": "Wordle",
+    "short_name": "Sözütap",
+    "name": "Sözütap",
     "icons": [
         {
             "src": "/images/wordle_logo_48x48.png",
@@ -38,9 +38,9 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "https://wordle-svelte.vercel.app/",
+    "start_url": "https://sozutap.com/",
     "background_color": "#6aaa64",
     "display": "standalone",
     "theme_color": "#6aaa64",
-    "description": "A daily word game"
+    "description": "Günlük Söz Oyunu"
 }

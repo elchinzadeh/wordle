@@ -1,10 +1,12 @@
 <script>
 	import MiniBoard from '$lib/mini-board/mini_board.svelte'
 	import Icon from '@iconify/svelte'
-
+	import {shareStatus,generateEmojiGrid} from '$utils/utils'
+	import { data } from '$utils/store'
 	import { fade } from 'svelte/transition'
 	export let visible = false
 	export let guess_list
+
 </script>
 
 {#if visible}
@@ -26,7 +28,15 @@
 					</div>
 				</div>
 				<div class="mt-5 sm:mt-6">
-					<button on:click={() => visible = false} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" > Bağla </button>
+					<button on:click={() => {
+						shareStatus(guess_list);
+						visible = false;
+						$data.toast = {
+							visble: true,
+							message: 'Oyun nəticəsi kopyalandı',
+							type: 'bg-green-200'
+						}
+					}} type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm" > Paylaş </button>
 				</div>
 			</div>
 		</div>

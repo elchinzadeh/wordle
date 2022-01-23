@@ -92,3 +92,37 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   return statuses
 }
 
+let solutionIndex = 1
+
+export const shareStatus = (guesses: string[]) => {
+  navigator.clipboard.writeText(
+    'Wordle Azərbaycanca \n' + 
+    'sozutap.com ' +
+      solutionIndex +
+      ' ' +
+      guesses.length +
+      '/6\n' +
+      generateEmojiGrid(guesses)
+  )
+}
+
+export const generateEmojiGrid = (guesses: string[]) => {
+  return guesses
+    .map((guess) => {
+      const status = getGuessStatuses(guess)
+      return guess
+        .split('')
+        .map((letter, i) => {
+          switch (status[i]) {
+            case 'correct':
+              return '🟩'
+            case 'present':
+              return '🟨'
+            default:
+              return '⬜'
+          }
+        })
+        .join('')
+    })
+    .join('\n')
+}
