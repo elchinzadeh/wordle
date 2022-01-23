@@ -3,9 +3,10 @@
 </script>
 
 <svelte:head>
-	<title>Sözütap - Günlük Söz Oyunu</title>
-	<link href="wordle_logo_32x32.png" rel="icon shortcut" sizes="3232" />
-	<link href="wordle_logo_192x192.png" rel="apple-touch-icon" />
+	<meta name="description" content="Azərbaycanca Wordle oyunu. Hər gün yeni söz tapın">
+	<title>SözüTap - Günlük Söz Oyunu</title>
+	<link href="images/favicon-32x32.png" rel="icon shortcut" sizes="3232" />
+	<link href="images/apple-touch-icon.png" rel="apple-touch-icon" />
 </svelte:head>
 
 <slot />

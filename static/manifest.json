@@ -1,39 +1,39 @@
 {
-    "short_name": "Sözütap",
-    "name": "Sözütap",
+    "short_name": "SözüTap",
+    "name": "SözüTap",
     "icons": [
         {
-            "src": "/images/wordle_logo_48x48.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "/images/wordle_logo_72x72.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "72x72"
         },
         {
-            "src": "/images/wordle_logo_96x96.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "/images/wordle_logo_144x144.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "144x144"
         },
         {
-            "src": "/images/wordle_logo_168x168.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "168x168"
         },
         {
-            "src": "/images/wordle_logo_192x192.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/images/wordle_logo_512x512.png",
+            "src": "/images/favicon-32x32.png",
             "type": "image/png",
             "sizes": "512x512"
         }
