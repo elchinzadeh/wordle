@@ -29,11 +29,11 @@
 							<p class="text-sm text-gray-500">G hərfi gizli sözdədir və düzgün yerdədir							</p>
 
 							<div class="flex justify-center mb-1 mt-4">
-								<Cell value="P" />
-								<Cell value="I" />
-								<Cell value="L" status="present" />
-								<Cell value="O" />
-								<Cell value="T" />
+								<Cell value="K" />
+								<Cell value="İ" />
+								<Cell value="T" status="present" />
+								<Cell value="A" />
+								<Cell value="B" />
 							</div>
 							<p class="text-sm text-gray-500">T hərfi gizli sözdədir lakin səhv yerdədir</p>
 
