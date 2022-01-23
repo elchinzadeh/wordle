@@ -6,7 +6,7 @@
 	let keyboard = [
 		['Q', 'Ü', 'E', 'R', 'T', 'Y', 'U', 'İ', 'O', 'P', 'Ö', 'Ğ'],
 		['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'I', 'Ə'],
-		['Yoxla', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'Z', 'Ç', 'Ş', 'Sil']
+		['Yoxla', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'Ç', 'Ş', 'Sil']
 	]
 	$: charStatuses = getStatuses(guess_list)
 </script>
