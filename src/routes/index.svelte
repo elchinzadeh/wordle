@@ -43,7 +43,7 @@
 
 	function checkWord() {
 		if (!isWordInWordList(current_guess)) {
-			toast.showToast('Word not found')
+			toast.showToast('Söz bazada tapılmadı')
 			return
 		}
 
