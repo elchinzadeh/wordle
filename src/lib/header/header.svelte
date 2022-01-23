@@ -13,7 +13,7 @@
 			</div>
 
 			<div class="flex items-center">
-				<h1 class="text-4xl font-bold">WORDLE</h1>
+				<h1 class="text-4xl font-bold">SÖZÜTAP</h1>
 			</div>
 
 			<div class="flex items-center">
